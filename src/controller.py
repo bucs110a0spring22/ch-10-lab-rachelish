@@ -3,7 +3,7 @@ import pygame
 import random
 from src import hero
 from src import enemy
-
+from src import diamond
 
 class Controller:
     def __init__(self, width=640, height=480):
@@ -18,15 +18,24 @@ class Controller:
         """Load the sprites that we need"""
 
         self.enemies = pygame.sprite.Group()
+        self.diamonds = pygame.sprite.Group()
+
         num_enemies = 3
+        self.dead = False
         for i in range(num_enemies):
+            #self.dead = True
             x = random.randrange(100, 400)
             y = random.randrange(100, 400)
             self.enemies.add(enemy.Enemy("Boogie", x, y, 'assets/enemy.png'))
+            
         self.hero = hero.Hero("Conan", 50, 80, "assets/hero.png")
+
+
         self.all_sprites = pygame.sprite.Group((self.hero,) + tuple(self.enemies))
         self.state = "GAME"
 
+
+  
     def mainLoop(self):
         while True:
             if(self.state == "GAME"):
@@ -51,14 +60,28 @@ class Controller:
 
             # check for collisions
             fights = pygame.sprite.spritecollide(self.hero, self.enemies, True)
+            touched = pygame.sprite.spritecollide(self.hero, self.diamonds, True)
+          
+            self.kill = 0
             if(fights):
                 for e in fights:
                     if(self.hero.fight(e)):
                         e.kill()
-                        self.background.fill((250, 250, 250))
+                        self.kill += 1
+                        #'''edits'''
+                        self.dead = True
+                        if self.dead == True:
+                            #print("Coords", enemy.Enemy())
+                            print("yes!")
+                            #print(e.rect.x)
+                            for i in range(self.kill):
+                                self.diamonds.add(diamond.Diamond("Gem", e.rect.x, e.rect.y, 'assets/diamond.png'))                            
+                                                 
                     else:
                         self.background.fill((250, 0, 0))
                         self.enemies.add(e)
+            if self.dead == True:        
+                self.gem_sprite = pygame.sprite.Group(self.diamonds,)
 
             # redraw the entire screen
             self.enemies.update()
@@ -66,6 +89,9 @@ class Controller:
             if(self.hero.health == 0):
                 self.state = "GAMEOVER"
             self.all_sprites.draw(self.screen)
+          #'''edits'''
+            if self.dead == True:
+                self.gem_sprite.draw(self.screen)
 
             # update the screen
             pygame.display.flip()

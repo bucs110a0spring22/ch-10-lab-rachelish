@@ -8,20 +8,18 @@
 Replace anything surrounded by the `< >` symbols._
 
 ## SUMMARY:
- < Provide a short description of your program's functionality. No more than a couple sentences. >
+use arrow keys to move killer to kill other killers to get diamonds?
 #### Unique Feature
- < Describe the unique feature you added >
-
+added diamonds each time killer kills
 ## GRACE DAYS
-Grace days used for this assignment: < # >
+Grace days used for this assignment: 5
 
-Grace days remaining: < # >/5
+Grace days remaining: 0/5
 
 ## KNOWN BUGS AND INCOMPLETE PARTS:
- < What parts of the project you were not able to complete >
+brooooooo you don't even knowwwwwwwwwwwwwww
 
 ## REFERENCES:
- < List any outside resources used >
-
+pygame, literally the entire internet
 ## MISCELLANEOUS COMMENTS:
- < Anything you would like the grader to know >
+help.

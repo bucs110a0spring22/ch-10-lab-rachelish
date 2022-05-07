@@ -5,7 +5,6 @@ class Hero(pygame.sprite.Sprite):
     def __init__(self, name, x, y, img_file):
         #initialize all the Sprite functionality
         pygame.sprite.Sprite.__init__(self)
-
         #The following two attributes must be called image and rect
         #pygame assumes you have intitialized these values
         #and uses them to update the screen
@@ -39,3 +38,7 @@ class Hero(pygame.sprite.Sprite):
         else:
             print("successful attack")
         return True
+    #def touch(self, gem):
+     #   self.health += 1
+
+
