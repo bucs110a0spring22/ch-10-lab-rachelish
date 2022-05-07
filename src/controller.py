@@ -75,8 +75,12 @@ class Controller:
                             print("yes!")
                             #print(e.rect.x)
                             for i in range(self.kill):
-                                self.diamonds.add(diamond.Diamond("Gem", e.rect.x, e.rect.y, 'assets/diamond.png'))                            
-                                                 
+                                self.diamonds.add(diamond.Diamond("Gem", e.rect.x + 50, e.rect.y + 50, 'assets/diamond.png'))                            
+            if (touched):
+                for d in touched:
+                    if(self.hero.touch(d)):
+                        d.kill()            
+                                                             
                     else:
                         self.background.fill((250, 0, 0))
                         self.enemies.add(e)

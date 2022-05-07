@@ -38,7 +38,7 @@ class Hero(pygame.sprite.Sprite):
         else:
             print("successful attack")
         return True
-    #def touch(self, gem):
-     #   self.health += 1
+    def touch(self, gem):
+       self.health += 1
 
 
